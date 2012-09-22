@@ -20,11 +20,11 @@ Ou instale de acordo com o comando abaixo:
 
 Crie o arquivo app_root/config/initializers/omniauth.rb com o seguinte conteudo:
 
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :vpsa, "app_id", "app_secret",  {
-    redirect_uri:'http://localhost:3000/auth/vpsa/callback'
-  }
-end
+	Rails.application.config.middleware.use OmniAuth::Builder do
+	  provider :vpsa, "app_id", "app_secret",  {
+	    redirect_uri:'http://localhost:3000/auth/vpsa/callback'
+	  }
+	end
 
 Configure a rota no arquivo routes.rb
 
