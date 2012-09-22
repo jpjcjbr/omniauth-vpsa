@@ -1,24 +1,40 @@
 # Omniauth::Vpsa
 
-TODO: Write a gem description
+Gem criada para facilitar a integração com as API's do VPSA
 
-## Installation
+## Instalação
 
-Add this line to your application's Gemfile:
+Adicione a seguinte linha ao seu Gemfile:
 
     gem 'omniauth-vpsa'
 
-And then execute:
+E execute:
 
     $ bundle
 
-Or install it yourself as:
+Ou instale de acordo com o comando abaixo:
 
     $ gem install omniauth-vpsa
 
-## Usage
+## Como usar
 
-TODO: Write usage instructions here
+Crie o arquivo app_root/config/initializers/omniauth.rb com o seguinte conteudo:
+
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :vpsa, "app_id", "app_secret",  {
+    redirect_uri:'http://localhost:3000/auth/vpsa/callback'
+  }
+end
+
+Configure a rota no arquivo routes.rb
+
+	match '/auth/:provider/callback', to: 'sessions#create'
+
+Crie o controller que servirá como callback para o processo de autenticação
+
+Para acessar os dados do usuário utilize o seguinte código:
+
+	request.env['omniauth.auth']
 
 ## Contributing
 
