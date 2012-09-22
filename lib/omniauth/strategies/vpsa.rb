@@ -17,6 +17,10 @@ module OmniAuth
         :token_url     => '/apps/oauth/token'
       }
 
+      option :token_params, {
+        :formato => :json
+      }
+
       def request_phase
         redirect client.auth_code.authorize_url({:redirect_uri => options.redirect_uri }.merge(options.authorize_params)).gsub("client_id", "app_id")
       end
@@ -51,8 +55,15 @@ module OAuth2
       opts = {:raise_errors => options[:raise_errors], :parse => params.delete(:parse)}
       if options[:token_method] == :post
         headers = params.delete(:headers)
-        opts[:body] = params.to_json
-        opts[:headers] =  {'Content-Type' => 'application/json'}
+
+        if params[:formato] == :json
+          opts[:body] = params.to_json
+          opts[:headers] =  {'Content-Type' => 'application/json'}
+        else
+          opts[:body] = params
+          opts[:headers] =  {'Content-Type' => 'application/x-www-form-urlencoded'}
+        end
+
         opts[:headers].merge!(headers) if headers
       else
         opts[:params] = params
@@ -67,7 +78,7 @@ module OAuth2
   module Strategy
     class Base
       def client_params
-        {'app_id' => @client.id, 'app_secret' => @client.secret}
+        {'app_id' => @client.id, 'app_secret' => @client.secret, 'client_id' => @client.id, 'client_secret' => @client.secret}
       end
     end
   end
