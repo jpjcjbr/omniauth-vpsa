@@ -36,6 +36,8 @@ Para acessar os dados do usuário utilize o seguinte código:
 
 	request.env['omniauth.auth']
 
+Para mais informações consulte o projeto de exemplo neste repositório.
+
 ## Contributing
 
 1. Fork it
