@@ -12,7 +12,7 @@ module OmniAuth
       option :provider_ignores_state, :true
 
       option :client_options, {
-        :site          => 'https://www.vpsa.com.br',
+        :site          => 'https://integrador.varejonline.com.br',
         :authorize_url => '/apps/oauth/authorization?response_type=code',
         :token_url     => '/apps/oauth/token'
       }
