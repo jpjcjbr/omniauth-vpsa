@@ -1,12 +1,12 @@
-# Omniauth::Vpsa
+# Omniauth::Varejonline
 
-Gem criada para facilitar a integração com as API's do VPSA
+Gem criada para facilitar a integração com as API's do Varejonline
 
 ## Instalação
 
 Adicione a seguinte linha ao seu Gemfile:
 
-    gem 'omniauth-vpsa'
+    gem 'omniauth-varejonline'
 
 E execute:
 
@@ -14,15 +14,15 @@ E execute:
 
 Ou instale de acordo com o comando abaixo:
 
-    $ gem install omniauth-vpsa
+    $ gem install omniauth-varejonline
 
 ## Como usar
 
 Crie o arquivo app_root/config/initializers/omniauth.rb com o seguinte conteudo:
 
 	Rails.application.config.middleware.use OmniAuth::Builder do
-	  provider :vpsa, "app_id", "app_secret",  {
-	    redirect_uri:'http://localhost:3000/auth/vpsa/callback'
+	  provider :varejonline, "app_id", "app_secret",  {
+	    redirect_uri:'http://localhost:3000/auth/varejonline/callback'
 	  }
 	end
 

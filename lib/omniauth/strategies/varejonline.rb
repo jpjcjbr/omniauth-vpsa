@@ -2,17 +2,17 @@ require 'omniauth/strategies/oauth2'
 
 module OmniAuth
   module Strategies
-    class Vpsa < OmniAuth::Strategies::OAuth2
+    class Varejonline < OmniAuth::Strategies::OAuth2
 
       # Possible scopes: userinfo.email,userinfo.profile,plus.me
       DEFAULT_SCOPE = "all"
 
-      option :name, 'vpsa'
+      option :name, 'varejonline'
       option :authorize_options, [:app_id, :redirect_uri]
       option :provider_ignores_state, :true
 
       option :client_options, {
-        :site          => 'https://www.vpsa.com.br',
+        :site          => 'https://integrador.varejonline.com.br',
         :authorize_url => '/apps/oauth/authorization?response_type=code',
         :token_url     => '/apps/oauth/token'
       }
